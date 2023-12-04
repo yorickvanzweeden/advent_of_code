@@ -67,7 +67,7 @@ treb7uchet"), 142);
 
     // ) causes him to enter the basement at character position 1.
     #[test]
-    fn sample6() {
+    fn sample2() {
         assert_eq!(part2("two1nine
 eightwothree
 abcone2threexyz
