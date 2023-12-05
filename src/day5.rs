@@ -36,7 +36,8 @@ fn parse_input(input: &str) -> Vec<Segment> {
         let mut rules_vec = Vec::new();
 
         for line in &lines[1..] {
-            let nums: Vec<i64> = line.split_whitespace()
+            let nums: Vec<i64> = line
+                .split_whitespace()
                 .map(|s| s.parse().unwrap())
                 .collect();
 
@@ -52,45 +53,58 @@ fn parse_input(input: &str) -> Vec<Segment> {
     segment_vec
 }
 
-
 #[aoc(day5, part1)]
 pub fn part1(input: &str) -> i64 {
     let segments = parse_input(input);
-    let seeds: Vec<i64> = input.split("\n")
-        .next().unwrap()
+    let seeds: Vec<i64> = input
+        .split("\n")
+        .next()
+        .unwrap()
         .split(":")
-        .nth(1).unwrap()
+        .nth(1)
+        .unwrap()
         .split_whitespace()
         .map(|s| s.parse().unwrap())
         .collect();
 
-    seeds.iter().map(|&seed| {
-        segments.iter().fold(seed, |output, segment| {
-            segment.process(output)
+    seeds
+        .iter()
+        .map(|&seed| {
+            segments
+                .iter()
+                .fold(seed, |output, segment| segment.process(output))
         })
-    }).min().unwrap()
+        .min()
+        .unwrap()
 }
 
 #[aoc(day5, part2)]
 pub fn part2(input: &str) -> i64 {
     let segments = parse_input(input);
 
-    let seeds: Vec<i64> = input.split("\n")
-        .next().unwrap()
+    let seeds: Vec<i64> = input
+        .split("\n")
+        .next()
+        .unwrap()
         .split(":")
-        .nth(1).unwrap()
+        .nth(1)
+        .unwrap()
         .split_whitespace()
         .map(|s| s.parse().unwrap())
         .collect();
 
-    let seeds_iter = seeds.chunks(2)
-        .flat_map(|chunk| chunk[0]..chunk[0]+chunk[1]);
+    let seeds_iter = seeds
+        .chunks(2)
+        .flat_map(|chunk| chunk[0]..chunk[0] + chunk[1]);
 
-    seeds_iter.map(|seed| {
-        segments.iter().fold(seed, |output, segment| {
-            segment.process(output)
+    seeds_iter
+        .map(|seed| {
+            segments
+                .iter()
+                .fold(seed, |output, segment| segment.process(output))
         })
-    }).min().unwrap()
+        .min()
+        .unwrap()
 }
 
 #[cfg(test)]

@@ -14,7 +14,7 @@ pub fn find_indices(input: &str, needle: &str) -> Vec<usize> {
 pub fn part1(input: &str) -> i32 {
     let mut sum = 0;
     for line in input.lines() {
-        let digits: Vec<char> = line.chars().filter(|c|c.is_numeric()).collect();
+        let digits: Vec<char> = line.chars().filter(|c| c.is_numeric()).collect();
         let number_str: String = format!("{}{}", digits.first().unwrap(), digits.last().unwrap());
         let number: i32 = number_str.parse::<i32>().unwrap();
         sum += number;
@@ -59,21 +59,31 @@ mod tests {
     // (()) and ()() both result in floor 0.
     #[test]
     fn sample1() {
-        assert_eq!(part1("1abc2
+        assert_eq!(
+            part1(
+                "1abc2
 pqr3stu8vwx
 a1b2c3d4e5f
-treb7uchet"), 142);
+treb7uchet"
+            ),
+            142
+        );
     }
 
     // ) causes him to enter the basement at character position 1.
     #[test]
     fn sample2() {
-        assert_eq!(part2("two1nine
+        assert_eq!(
+            part2(
+                "two1nine
 eightwothree
 abcone2threexyz
 xtwone3four
 4nineeightseven2
 zoneight234
-7pqrstsixteen"), 281);
+7pqrstsixteen"
+            ),
+            281
+        );
     }
 }
