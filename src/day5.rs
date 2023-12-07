@@ -7,13 +7,13 @@ struct Rule {
 
 #[derive(Debug)]
 struct Segment {
-    name: String,
+    _name: String,
     rules: Vec<Rule>,
 }
 
 impl Segment {
     fn new(name: String, rules: Vec<Rule>) -> Self {
-        Segment { name, rules }
+        Segment { _name: name, rules }
     }
 
     fn process(&self, input: i64) -> i64 {
