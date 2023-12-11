@@ -10,4 +10,6 @@ bench = false
 rust-crypto = "0.2.36"
 aoc-runner = "0.3.0"
 aoc-runner-derive = "0.3.0"
-cargo-aoc = "0.1.0"
+cargo-aoc = "0.3.7"
+num = { version = "0.4.1", features = [] }
+itertools = "0.12.0"
